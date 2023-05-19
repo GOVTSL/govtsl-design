@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:metatemplate": "yarn workspace @springload/metatemplate build",
+    "build:release": "yarn workspace @govtsl/ds build:release",
+    "build:website:compile-markdown": "yarn workspace @govtsl/ds-website compile-markdown",
+    "build:website": "yarn workspace @govtsl/ds-website build",
+    "build:website:ci:validate-build": "yarn workspace @govtsl/ds-website ci:validate-build",
+    "build": "yarn build:metatemplate && yarn build:release && yarn build:website:compile-markdown && yarn build:website",
+    "serve": "yarn workspace @govtsl/ds-website serve",
+    "test__comment": "DEVELOPER_NOTE: The website static build tests itself see pre/post build directory scripts in pacakge govtsl website",
+    "sync-docs": "cp ./README.md ./packages/govtsl-ds/README.md && cp ./CONTRIBUTING.md ./packages/govtsl-ds/CONTRIBUTING.md && cp ./CHANGELOG.md ./packages/govtsl-ds/CHANGELOG.md",
+    "node-modules-clear": "yarn workspace @govtsl/ds node-modules-clear && yarn workspace @govtsl/ds-website node-modules-clear && rimraf ./node_modules",
+    "cache-clear": "yarn workspace @govtsl/ds clear-cache && yarn workspace @govtsl/ds-website clear-cache",
+    "test": "yarn workspace @govtsl/ds-website test"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.3"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "json5": "^2.1.0",
+    "yarn": "^1.13.0"
+  }
+}
